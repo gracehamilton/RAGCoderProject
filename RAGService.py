@@ -49,7 +49,7 @@ def get_ques_response_prompt(question):
     Given the provided context, please provide the answer to the following question:
     {question}"""
 
-#define embedding function
+#RAG chat session definition
 class RAGSession:
     def __init__(self, embeddingFunction=OllamaEmbeddingFunction(model_name=embeddings_model, url=ollama_url), context=file_context):
         #hook up to Ollama embedding function
