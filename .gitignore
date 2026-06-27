@@ -209,5 +209,6 @@ __marimo__/
 
 #other environment directories
 dev/
-data/kb/
+data/
+.copilot/
 deprecated/
