@@ -43,3 +43,112 @@ def get_rag_response(rag_instance=None, query=None):
         return response
     except Exception as e:
         raise RuntimeError(f"Failed to get RAG response: {e}")
+
+tools = [
+    {
+        "name": "add_file_path",
+        "description": "Adds a file path to the system.",
+        "input_schema": {
+            "type": "object",
+            "properties": {
+                "file_path": {
+                    "type": "string",
+                    "description": "The file path to add."
+                }
+            },
+            "required": ["file_path"]
+        }
+    },
+    {
+        "name": "read_file",
+        "description": "Reads the content of a file.",
+        "input_schema": {
+            "type": "object",
+            "properties": {
+                "file_path": {
+                    "type": "string",
+                    "description": "The path to the file to read."
+                }
+            },
+            "required": ["file_path"]
+        }
+    },
+    {
+        "name": "write_file",
+        "description": "Writes content to a file.",
+        "input_schema": {
+            "type": "object",
+            "properties": {
+                "file_path": {
+                    "type": "string",
+                    "description": "The path to the file to write."
+                },
+                "content": {
+                    "type": "string",
+                    "description": "The content to write to the file."
+                }
+            },
+            "required": ["file_path", "content"]
+        }
+    },
+    {
+        "name": "delete_file",
+        "description": "Deletes a file from the system.",
+        "input_schema": {
+            "type": "object",
+            "properties": {
+                "file_path": {
+                    "type": "string",
+                    "description": "The path to the file to delete."
+                }
+            },
+            "required": ["file_path"]
+        }
+    },
+    {
+        "name": "get_web_content",
+        "description": "Fetches the content of a web page given its URL.",
+        "input_schema": {
+            "type": "object",
+            "properties": {
+                "url": {
+                    "type": "string",
+                    "description": "The URL of the web page to fetch."
+                }
+            },
+            "required": ["url"]
+        }
+    },
+    {
+        "name": "parse_web_content",
+        "description": "Parses HTML content and extracts text.",
+        "input_schema": {
+            "type": "object",
+            "properties": {
+                "html_content": {
+                    "type": "string",
+                    "description": "The HTML content to parse."
+                }
+            },
+            "required": ["html_content"]
+        }
+    },
+    {
+        "name": "get_rag_response",
+        "description": "Gets a response from the RAG module.",
+        "input_schema": {
+            "type": "object",
+            "properties": {
+                "query": {
+                    "type": "string",
+                    "description": "The query to send to the RAG system."
+                },
+                "rag_instance": {
+                    "type": "object",
+                    "description": "The instance of the RAG system."
+                }
+            },
+            "required": ["query", "rag_instance"]
+        }
+    }
+]
